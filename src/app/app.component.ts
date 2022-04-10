@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -7,15 +7,17 @@ import { Component } from "@angular/core";
 })
 export class AppComponent implements OnInit {
   allowResetUsername = false;
-  userName = ``;
+  username = "";
 
   ngOnInit() {}
 
   onChangeUsername(event: Event) {
-    this.allowResetUsername = true;
+    this.username = (<HTMLInputElement>event.target).value;
+    this.allowResetUsername = this.username == "" ? false : true;
+    console.log("fdafadfda");
   }
   onResetUsername(event: Event) {
-    this.userName = ``;
+    this.username = "";
     this.allowResetUsername = false;
   }
 }
